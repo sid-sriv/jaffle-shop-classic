@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_issues
+    description: "Staging model for issues data. Includes all columns from the raw issues table."
+    columns:
+      - name: description
+        description: "Description of the issue."
+      - name: created_by_id
+        description: "ID of the person who created the issue."
+      - name: closed_by_id
+        description: "ID of the person who closed the issue."
+      - name: vehicle_id
+        description: "Vehicle identifier."
+      - name: vehicle_meter_value
+        description: "Vehicle meter value as a float."
+      - name: vehicle_meter_unit
+        description: "Unit of the vehicle meter value (e.g., km or mi)."
+      - name: reported_at
+        description: "Timestamp of when the issue was reported."
+      - name: resolved_at
+        description: "Timestamp of when the issue was resolved."
+      - name: state
+        description: "Current state of the issue (e.g., open, resolved)."
+      - name: custom_fields
+        description: "Custom fields provided for the issue."
