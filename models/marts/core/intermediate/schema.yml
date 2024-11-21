@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: int_issues_dashboard
+    description: "Intermediate model for issues dashboard, aggregating issues data."
+    columns:
+      - name: description
+        description: "Description of the issue."
+      - name: vehicle_id
+        description: "Vehicle ID associated with the issue."
+      - name: vehicle_meter_value
+        description: "Meter value of the vehicle when the issue was reported."
+      - name: created_by_id
+        description: "ID of the user who created the issue."
+      - name: resolved_at_cst
+        description: "Resolved timestamp in CST."
+      - name: state
+        description: "Current state of the issue."
+      - name: reported_at_cst
+        description: "Reported timestamp in CST."
+        tests:
+          - not_null
+      - name: week_start
+        description: "Start of the week when the issue was reported."
+        tests:
+          - not_null
+      - name: issue_count
+        description: "Count of issues per state and week."
+        tests:
+          - not_null
+
+  - name: int_issues
+    description: "Intermediate model for issues, clean and processed."
+    columns:
+      - name: description
+        description: "Cleaned issue description."
+      - name: vehicle_id
+        description: "Unique identifier for each vehicle."
+      - name: vehicle_meter_value
+        description: "Vehicle meter value."
+      - name: created_at_cst
+        description: "Creation timestamp in CST."
+        tests:
+          - not_null
+
+  - name: int_vehicles
+    description: "Intermediate model for vehicle data."
+    columns:
+      - name: vehicle_id
+        description: "Unique vehicle identifier."
+      - name: vehicle_meter_value
+        description: "Vehicle's meter reading."
+        
+  - name: int_metadata
+    description: "Intermediate metadata model, including created_by_id and closed_by_id."
+    columns:
+      - name: created_by_id
+        description: "ID of the person who created the issue."
+      - name: closed_by_id
+        description: "ID of the person who closed the issue."

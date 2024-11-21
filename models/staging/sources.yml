@@ -6,4 +6,9 @@ sources:
     schema: main
     tables:
       - name: issues
-        description: "Raw issues data from Google Sheets"
+        description: "Issues data from the external system"
+        columns:
+          - name: description
+            description: "The description of the issue, cleaned of special characters."
+            tests:
+              - not_null

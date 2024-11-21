@@ -2,10 +2,15 @@ version: 2
 
 models:
   - name: stg_issues
-    description: "Staging model for issues data. Includes all columns from the raw issues table."
+    description: "Staging model for issues data. Cleans and normalizes the description field."
     columns:
       - name: description
-        description: "Description of the issue."
+        description: "Cleaned issue description with special characters removed."
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - '^[a-zA-Z0-9\s,._-]*$'  # Updated to allow common punctuation
       - name: created_by_id
         description: "ID of the person who created the issue."
       - name: closed_by_id
