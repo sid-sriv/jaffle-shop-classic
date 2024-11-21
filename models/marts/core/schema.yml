@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: issues_dashboard
+    description: "Final dashboard model for issues data. Aggregates data from multiple sources for reporting purposes."
+    columns:
+      - name: description
+        description: "Description of the issue."
+      - name: vehicle_id
+        description: "Unique identifier for the vehicle."
+      - name: vehicle_meter_value
+        description: "Meter value for the vehicle when the issue was reported."
+      - name: created_by_id
+        description: "ID of the user who created the issue."
+      - name: resolved_at_cst
+        description: "Timestamp when the issue was resolved, in CST."
+      - name: state
+        description: "Current state of the issue."
+      - name: reported_at_cst
+        description: "Timestamp when the issue was reported, in CST."
+      - name: issue_count
+        description: "Count of issues for a particular state and week."
+      - name: week_start
+        description: "Start of the week when the issue was reported."
+        tests:
+          - not_null

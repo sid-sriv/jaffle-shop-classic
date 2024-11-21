@@ -2,8 +2,15 @@
 
 select distinct
 
-    /* Primary key */
-    "DESCRIPTION" as description
+    /* Primary key - Clean DESCRIPTION */
+    COALESCE(
+        REGEXP_REPLACE(
+            TRIM("DESCRIPTION"),  -- Trim spaces
+            '[^a-zA-Z0-9\s]',     -- Remove special characters except alphanumeric and spaces
+            ''
+        ),
+        ''  -- Replace with empty string if null
+    ) as description
 
     /* Foreign keys */
     , "CREATED_BY_ID" as created_by_id
